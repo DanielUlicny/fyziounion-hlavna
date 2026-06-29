@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="sk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FyzioUnion</title>
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,800&f[]=switzer@400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --accent: #455a74;
+        --accent-hover: #38495e;
+        --accent-tint: #ebeff4;
+        --ink: #192231;
+        --ink-soft: #475262;
+        --muted: #6b7884;
+        --faint: #9aa6b0;
+        --bg: #f4f6f5;
+        --cream: #f7f4ef;
+        --surface: #ffffff;
+        --border: #e6e9ec;
+        --border-2: #d7dce1;
+        --teal: #0e7c86;
+        --teal-soft: #e4f1f1;
+        --r-lg: 18px;
+        --r-xl: 28px;
+        --r-2xl: 34px;
+        --sh-1: 0 1px 2px rgba(20, 40, 70, 0.05);
+        --sh-2: 0 10px 30px rgba(20, 40, 70, 0.07);
+        --sh-3: 0 30px 70px rgba(15, 30, 55, 0.14);
+        --font-display: "Cabinet Grotesk", "Switzer", system-ui, sans-serif;
+        --font-body: "Switzer", system-ui, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: var(--font-body);
+        color: var(--ink);
+        background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: var(--font-display);
+        margin: 0;
+        letter-spacing: -0.025em;
+      }
+      .wrap {
+        width: 100%;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      /* nav */
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 0;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+      }
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 11px;
+        flex: none;
+        background: var(--accent);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 20px;
+        letter-spacing: -0.04em;
+      }
+      .brand-name {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 22px;
+        letter-spacing: -0.02em;
+      }
+      .brand-name .ac {
+        color: var(--accent);
+      }
+      .nav-tag {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--faint);
+        letter-spacing: 0.02em;
+      }
+
+      /* hero */
+      .hero {
+        text-align: center;
+        padding: 54px 0 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 7px 15px;
+        border-radius: 999px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        box-shadow: var(--sh-1);
+        font-size: 12.5px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        color: var(--muted);
+        margin-bottom: 26px;
+      }
+      .eyebrow .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--teal);
+        box-shadow: 0 0 0 4px var(--teal-soft);
+      }
+      .hero h1 {
+        font-size: 58px;
+        font-weight: 800;
+        line-height: 1.02;
+        color: var(--ink);
+        max-width: 780px;
+        text-wrap: balance;
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: var(--accent);
+      }
+      .hero p {
+        font-size: 18.5px;
+        line-height: 1.6;
+        color: var(--ink-soft);
+        margin: 22px auto 0;
+        max-width: 540px;
+        text-wrap: pretty;
+      }
+
+      /* cards */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        padding: 48px 0 18px;
+      }
+      .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--r-2xl);
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        box-shadow: var(--sh-2);
+        transition:
+          transform 0.22s cubic-bezier(0.4, 0.1, 0.2, 1),
+          box-shadow 0.22s,
+          border-color 0.22s;
+      }
+      a.card {
+        cursor: pointer;
+      }
+      a.card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--sh-3);
+        border-color: var(--border-2);
+      }
+      .card-visual {
+        height: 172px;
+        position: relative;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+      .card.therapist .card-visual {
+        background: linear-gradient(150deg, #51677f 0%, #3a4c63 100%);
+      }
+      .card.patient .card-visual {
+        background: linear-gradient(150deg, #1a9098 0%, #0e6c75 100%);
+      }
+      .card-visual::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          120px 120px at 78% 22%,
+          rgba(255, 255, 255, 0.16),
+          transparent 70%
+        );
+      }
+      .card-glyph {
+        width: 74px;
+        height: 74px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.16);
+        backdrop-filter: blur(2px);
+        display: grid;
+        place-items: center;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+      }
+      .card-glyph svg {
+        width: 36px;
+        height: 36px;
+      }
+      .card-tag {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.92);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        color: var(--ink);
+      }
+      .card-tag.soon {
+        color: var(--teal);
+      }
+      .card-tag .led {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #1f9d6b;
+      }
+      .card-body {
+        padding: 28px 30px 30px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .card-kicker {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--faint);
+        margin-bottom: 8px;
+      }
+      .card h2 {
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 10px;
+      }
+      .card p {
+        font-size: 15px;
+        line-height: 1.62;
+        color: var(--muted);
+        margin: 0 0 24px;
+        text-wrap: pretty;
+      }
+      .card-cta {
+        margin-top: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        font-weight: 700;
+        font-size: 15px;
+        color: var(--accent);
+      }
+      .card.patient .card-cta {
+        color: var(--teal);
+      }
+      .card-cta svg {
+        width: 18px;
+        height: 18px;
+        transition: transform 0.2s;
+      }
+      a.card:hover .card-cta svg {
+        transform: translateX(4px);
+      }
+
+      footer {
+        margin-top: auto;
+        text-align: center;
+        padding: 30px 0 34px;
+        font-size: 13px;
+        color: var(--faint);
+      }
+      footer .sep {
+        margin: 0 9px;
+        opacity: 0.5;
+      }
+
+      @media (max-width: 780px) {
+        .wrap {
+          padding: 0 22px;
+        }
+        .hero {
+          padding: 34px 0 4px;
+        }
+        .hero h1 {
+          font-size: 38px;
+        }
+        .hero p {
+          font-size: 16.5px;
+        }
+        .cards {
+          grid-template-columns: 1fr;
+          gap: 18px;
+          padding: 34px 0 8px;
+        }
+        .nav-tag {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <nav class="nav">
+        <div class="brand">
+          <div class="brand-mark">F</div>
+          <div class="brand-name">Fyzio<span class="ac">Union</span></div>
+        </div>
+        <span class="nav-tag">Prototypy</span>
+      </nav>
+
+      <header class="hero">
+        <span class="eyebrow"
+          ><span class="dot"></span>FyzioUnion platforma</span
+        >
+        <h1>Rehabilitácia, ktorá <em>drží krok</em> s pacientom</h1>
+        <p>Vyberte, do ktorej časti platformy chcete vstúpiť.</p>
+      </header>
+
+      <main class="cards">
+        <a class="card therapist" href="https://terapeut.fyziounion.sk">
+          <div class="card-visual">
+            <span class="card-tag"><span class="led"></span>Funkčné</span>
+            <span class="card-glyph">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </span>
+          </div>
+          <div class="card-body">
+            <div class="card-kicker">Pre terapeuta</div>
+            <h2>Pracovný priestor</h2>
+            <p>
+              Spravujte pacientov, zostavujte programy a sledujte pokrok cez
+              hodnotiace nástroje.
+            </p>
+            <span class="card-cta"
+              >Vstúpiť
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </span>
+          </div>
+        </a>
+
+        <a class="card patient" href="https://pacient.fyziounion.sk">
+          <div class="card-visual">
+            <span class="card-tag soon">Čoskoro</span>
+            <span class="card-glyph">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="5" y="2" width="14" height="20" rx="3" />
+                <path d="M12 18h.01" />
+              </svg>
+            </span>
+          </div>
+          <div class="card-body">
+            <div class="card-kicker">Pre pacienta</div>
+            <h2>Mobilná aplikácia</h2>
+            <p>
+              Pacient vidí svoj rozvrh, prehráva cviky a zapisuje pokrok priamo
+              z telefónu.
+            </p>
+            <span class="card-cta"
+              >Vstúpiť
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </span>
+          </div>
+        </a>
+      </main>
+    </div>
+
+    <footer>
+      FyzioUnion<span class="sep">·</span>náhľad prototypov<span class="sep"
+        >·</span
+      >2026
+    </footer>
+  </body>
+</html>
